@@ -1,0 +1,24 @@
+{
+  "name": "collab-draw",
+  "version": "1.0.0",
+  "description": "collaboration drawing with convajs and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "keywords": [
+    "konvajs",
+    "collab",
+    "draw",
+    "socket.io"
+  ],
+  "author": "keith ernest ouano",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4",
+    "uuid": "^3.1.0"
+  }
+}

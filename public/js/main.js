@@ -63,13 +63,14 @@ function getRandomColor() {
   return color;
 }
 
-function startPath( data, sessionId ) {
-  if(!paths[sessionId]) {
+function startPath( data, _sessionId ) {
+  
+  if(!paths[_sessionId]) {
     var context = canvas.getContext('2d');
         context.strokeStyle = data.color;
         context.lineJoin = "round";
         context.lineWidth = 5;
-    paths[sessionId] = {
+    paths[_sessionId] = {
       context : context,
       isPaint : true,
       lastPointerPosition: data.point,
@@ -78,11 +79,11 @@ function startPath( data, sessionId ) {
   }
 }
 
-function continuePath(point, sessionId, callback){
-  if (!paths[sessionId]) return;
-  if (!paths[sessionId].isPaint) return;
+function continuePath(point, _sessionId, callback){
+  if (!paths[_sessionId]) return;
+  if (!paths[_sessionId].isPaint) return;
 
-  var path = paths[sessionId];
+  var path = paths[_sessionId];
   var mode = path.mode;
   var context = path.context;
   var lastPointerPosition = path.lastPointerPosition;
@@ -114,16 +115,15 @@ function continuePath(point, sessionId, callback){
     callback(lastPointerPosition)
 }
 
-function endPath(point, sessionId, callback) {
-  var path = paths[sessionId];
+function endPath(point, _sessionId, callback) {
+  var path = paths[_sessionId];
     path.isPaint = false;
   if(callback)
     callback(path.lastPointerPosition)
-  delete paths[sessionId];
+  delete paths[_sessionId];
 }
 
 var select = document.getElementById('tool');
-
 select.addEventListener('change', function() {
   mode = select.value;
 });

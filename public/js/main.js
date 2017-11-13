@@ -88,7 +88,9 @@ function continuePath(point, _sessionId, callback){
   var context = path.context;
   var lastPointerPosition = path.lastPointerPosition;
   
-  var pos = stage.getPointerPosition() || point;
+  var pos = stage.getPointerPosition();
+
+  if (!!point) pos = point;
 
   if (mode === 'brush') {
     context.globalCompositeOperation = 'source-over';

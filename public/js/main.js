@@ -125,7 +125,7 @@ function endPath(point, _sessionId, callback) {
   delete paths[_sessionId];
 }
 
-var select = document.getElementById('tool');
-select.addEventListener('change', function() {
-  mode = select.value;
-});
+// var select = document.getElementById('tool');
+// select.addEventListener('change', function() {
+//   mode = select.value;
+// });

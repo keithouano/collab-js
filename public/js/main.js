@@ -11,13 +11,13 @@ var layer = new Konva.Layer();
 stage.add(layer);
 
 var canvas = document.createElement('canvas');
-canvas.width = stage.width() / 1.25;
-canvas.height = stage.height() / 1.25;
+canvas.width = 900;//stage.width() / 1.25;
+canvas.height = 700;//stage.height() / 1.25;
 
 var image = new Konva.Image({
     image: canvas,
-    x : stage.width() / 8,
-    y : stage.height() / 8,
+    x : 900 / 8,
+    y : 700 / 8,
     stroke: getRandomColor(), //'green',
     blur: 2
 });

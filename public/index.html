@@ -1,69 +1,247 @@
-
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Konva Free Drawing Demo</title>
-  <link rel='stylesheet' href='./css/style.css'>
-</head>
-<body>
+<html lang="en">
+	<head>
 
-  <div id="editbar" class="toolbar">
-    <div id="overlay">
-        <div id="overlay-inner"></div>
-    </div>
-      <ul class="menu_left">
-          <li class="acl-write" id="drawTool" data-key="draw">
-              <a class="grouped-left">
-                <span class="buttonicon buttonicon-draw"></span>
-              </a>
-          </li>
-          <li class="acl-write" id="pencilTool" data-key="pencil">
-              <a class="grouped-middle">
-                <span class="buttonicon buttonicon-pencil"></span>
-              </a>
-          </li>
-          <li class="acl-write" id="selectTool" data-key="select">
-              <a class="grouped-middle">
-                <span class="buttonicon buttonicon-select"></span>
-              </a>
-          </li>
-          <li class="acl-write" id="colorToggle" data-key="color">
-            <a class="grouped-middle">
-              <span class="buttonicon buttonicon-color" style="opacity:0.5">
-                <div style="display:inline-block;width:5px; height:16px; background-color:red;margin:0;padding:0;float:left"></div>
-                <div style="display:inline-block;width:5px; height:16px; background-color:blue;margin:0;padding:0;float:left"></div>
-                <div style="display:inline-block;width:5px; height:16px; background-color:green;margin:0;padding:0;float:left"></div>
-              </span>
+	<meta charset="utf-8" />
+	<title>Collaboration</title>
+	<meta name="viewport" content="width=device-width" />
+
+	<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="./css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+	<link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+	</head>
+		<body>
+			<div class="clearfix wrapper">
+				<div id="canvas" class="collab-container">
+          <div id="container"></div>
+				</div>
+				<div class="left-panel">
+					<div class="left-inner-panel">
+						<div id="SelectTools" class="liStyle bgHover">
+								<a class="tooltips">
+								<span id="ToolIcons" class="fa fa-pencil iconSize"></span>
+							</a>
+						</div>
+						<div id="EraserTools" class="liStyle bgHover">
+								<a class="tooltips">
+								<span id="EraserIcon" class="fa fa-eraser iconSize"></span>
+							</a>
+						</div>
+						<div id="TextTools" class="liStyle bgHover">
+								<a class="tooltips">
+								<span id="TextIcon" class="fa fa-font iconSize"></span>
+							</a>
+						</div>
+						<div id="SelectColors" class="liStyle bgHover">
+							<a class="tooltips">
+								<span id="ColorIcons" class="fa fa-paint-brush iconSize"></span>
+							</a>
+						</div>
+						<div id="SelectImage" class="liStyle bgHover">
+							<a class="tooltips">
+								<span id="ImageIcon" class="fa fa-picture-o iconSize"></span>
+							</a>
+						</div>
+						<div id="PdfImage" class="liStyle bgHover">
+							<a class="tooltips">
+								<span id="PdfIcon" class="fa fa-file-pdf-o iconSize"></span>
+							</a>
+						</div>
+						<div id="SaveImage" class="liStyle bgHover">
+							<a class="tooltips">
+								<span id="SaveIcon" class="fa fa-save (alias) iconSize"></span>
+							</a>
+						</div>
+						<div id="PANImage" class="liStyle bgHover">
+							<a class="tooltips">
+								<span id="PANIcon" class="fa fa-hand-paper-o iconSize"></span>
+							</a>
+						</div>			
+          </div>	
+        </div>
+        
+				<div id="ToolsDiv" class="select-tools hide">
+							
+							<div id="PANImage1" class="liStyle innerTool mob-back active">
+								<a class="tooltips">
+								  <span id="PANIcon1" class="fa fa-hand-paper-o toolSize"></span>
+			                    </a>
+							</div>
+							<div id="CircleImage" class="liStyle innerTool mob-back">
+								<a class="tooltips">
+								  <span id="CircleIcon" class="fa fa-circle-thin toolSize"></span>
+			                    </a>
+							</div>
+							<div id="PointImage" class="liStyle innerTool mob-back">
+								<a class="tooltips">
+								  <span id="PointIcon" class="fa fa-crosshairs toolSize"></span>
+			                    </a>
+							</div>
+							<div id="UndoImage" class="liStyle innerTool mob-back">
+								<a class="tooltips">
+								  <span id="UndoIcon" class="fa fa-repeat toolSize"></span>
+			                    </a>
+							</div>
+							<div id="DeleteImage" class="liStyle innerTool mob-back">
+								<a class="tooltips">
+								   <span id="DeleteIcon" class="fa fa-trash-o toolSize"></span>
+			                    </a>
+							</div>
+				</div>
+				<div id="SizeDiv" class="select-tools pencilSize hide">
+					<div id="Image12" class="liStyle innerSize mob-back">
+						 <a class="tooltips">
+						   <span id="Icon12" class="fa fa-circle toolSize font-12 font-margin"></span>
+	                     </a>
+					</div>
+					<div id="Image16" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						  <span id="Icon16" class="fa fa-circle toolSize font-16 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Image20" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						  <span id="Icon20" class="fa fa-circle toolSize font-20 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Image24" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="Icon24" class="fa fa-circle toolSize font-24 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Image28" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="Icon28" class="fa fa-circle toolSize font-28 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Image32" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="Icon32" class="fa fa-circle toolSize font-32 font-margin"></span>
+	                    </a>
+					</div>
+				</div>
+				<div id="SizeEraserDiv" class="select-tools eraserSize hide">
+					<div id="Eraser12" class="liStyle innerSize mob-back">
+						 <a class="tooltips">
+						   <span id="EIcon12" class="fa fa-circle toolSize font-12 font-margin"></span>
+	                     </a>
+					</div>
+					<div id="Eraser16" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						  <span id="EIcon16" class="fa fa-circle toolSize font-16 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Eraser20" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						  <span id="EIcon20" class="fa fa-circle toolSize font-20 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Eraser24" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="EIcon24" class="fa fa-circle toolSize font-24 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Eraser28" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="EIcon28" class="fa fa-circle toolSize font-28 font-margin"></span>
+	                    </a>
+					</div>
+					<div id="Eraser32" class="liStyle innerSize mob-back">
+						<a class="tooltips">
+						   <span id="EIcon32" class="fa fa-circle toolSize font-32 font-margin"></span>
+	                    </a>
+					</div>
+				</div>
+				<div id="TextDiv" class="select-tools textSize hide">
+					<div id="Size12" class="liStyle innerText mob-back">
+						 <a class="tooltips">
+						   <span id="Text12" class=" toolSize font-20 text-margin">12</span>
+	                     </a>
+					</div>
+					<div id="Size16" class="liStyle innerText mob-back">
+						<a class="tooltips">
+						  <span id="Text16" class="toolSize font-20 text-margin">16</span>
+	                    </a>
+					</div>
+					<div id="Size20" class="liStyle innerText mob-back">
+						<a class="tooltips">
+						  <span id="Text20" class="toolSize font-20 text-margin">20</span>
+	                    </a>
+					</div>
+					<div id="Size24" class="liStyle innerText mob-back">
+						<a class="tooltips">
+						   <span id="Text24" class="toolSize font-20 text-margin">24</span>
+	                    </a>
+					</div>
+					<div id="Size28" class="liStyle innerText mob-back">
+						<a class="tooltips">
+						   <span id="Text28" class="toolSize font-20 text-margin">28</span>
+	                    </a>
+					</div>
+					<div id="Size32" class="liStyle innerText mob-back">
+						<a class="tooltips">
+						   <span id="Text32" class="toolSize font-20 text-margin">32</span>
+	                    </a>
+					</div>
+				</div>
+				<div id="ColorsDiv" class="select-tools select-colors hide">
+					<div id="BlackColor" class="liStyle innerTool black color-padding">
+						 <a class="tooltips">
+						   <span id="BlackIcon" class="toolSize"></span>
+	                     </a>
+					</div>
+					<div id="RedColor" class="liStyle innerTool red color-padding">
+						<a class="tooltips">
+						  <span id="RedIcon" class="toolSize"></span>
+	                    </a>
+					</div>
+					<div id="GreenColor" class="liStyle innerTool green color-padding">
+						<a class="tooltips">
+						  <span id="GreenIcon" class="toolSize"></span>
+	                    </a>
+					</div>
+					<div id="BlueColor" class="liStyle innerTool blue color-padding">
+						<a class="tooltips">
+						   <span id="BlueIcon" class="toolSize"></span>
+	                    </a>
+					</div>
+					<div id="YellowColor" class="liStyle innerTool yellow color-padding">
+						<a class="tooltips">
+						   <span id="YellowIcon" class="toolSize"></span>
+	                    </a>
+					</div>
+					<div id="PurpleColor" class="liStyle innerTool purple color-padding">
+						<a class="tooltips">
+						   <span id="PurpleIcon" class="toolSize"></span>
+	                    </a>
+					</div>
+					<div id="PinkColor" class="liStyle innerTool pink color-padding">
+						<a class="tooltips">
+						   <span id="PinkIcon" class="toolSize"></span>
             </a>
-          </li>
-          <li class="acl-write" id="clearImage" data-key="clear">
-            <a class="grouped-right" data-l10n-id="draw.toolbar.clearImage" class="clearCanvasPrompt" title="Clear Drawing">
-              <span class="buttonicon buttonicon-clearImage" style="background-color:transparent;background-image:none;border:dotted 1px black;margin:0;color:#000;height:14px;line-height:14px" >X</span>
+					</div>
+					<div id="BrownColor" class="liStyle innerTool brown color-padding">
+						<a class="tooltips">
+						   <span id="BrownIcon" class="toolSize"></span>
             </a>
-          </li>
-          <li class="acl-write" id="toggleBackground" data-key="clear">
-            <a class="grouped-left" data-l10n-id="draw.toolbar.toggleBackground" class="toggleBackground" title="Toggle Transparent Background">
-              <span class="buttonicon buttonicon-toggleBackground" style="background-color:#fff;background-image:none;border:solid 1px black;margin:0;height:14px">
+					</div>
+					<div id="OrangeColor" class="liStyle innerTool orange color-padding">
+						<a class="tooltips">
+						   <span id="OrangeIcon" class="toolSize"></span>
             </a>
-          </li>
+					</div>
+				</div>
+			</div>
 
-      </ul>
-  </div>
+			<script src="./js/jquery.min.js" type="text/javascript"></script>
+      
+      <script src="./js/konva.min.js"></script>
 
-  <!-- <div class="tool-container">
-      Tool:
-      <select id="tool">
-        <option value="brush">Brush</option>
-        <option value="eraser">Eraser</option>
-      </select>
-  </div> -->
+      <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+      <script src="./js/socket.js" type="text/javascript"></script>
 
-  <div id="container"></div>
-
-  <script src="https://cdn.rawgit.com/konvajs/konva/1.7.6/konva.min.js"></script>
-  <script src="/socket.io/socket.io.js" type="text/javascript"></script>
-  <script src="./js/socket.js" type="text/javascript"></script>
-  <script src="./js/main.js" type="text/javascript"></script>
-</body>
+      <script src="./js/toolbar.js" type="text/javascript"></script>
+      <script src="./js/main.js" type="text/javascript"></script>
+		</body>
 </html>

@@ -20,6 +20,7 @@ io.on('start', function (data) {
 // Use to inform the server of user events
 // -----------------
 function emit(eventName, data) {
+  // console.log('socket emitting ...', eventName, data);
   io.emit(eventName, data, sessionId);
 }
 
@@ -37,5 +38,13 @@ io.on( 'continuePath', function( data, sessionId ) {
 
 io.on( 'endPath', function( data, sessionId ) {
   endPath(data, sessionId);
+})
+
+// -----------------
+// On
+// Write Text Node
+// -----------------
+io.on( 'writeTextNode', function( data, sessionId ) {
+  writeTextNode(data, sessionId);
 })
 

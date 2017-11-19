@@ -41,10 +41,15 @@ io.sockets.on('connection', function (socket) {
   socket.on( 'continuePath', function( data, sessionId ) {
     socket.broadcast.emit( 'continuePath', data, sessionId );
   });
-
+  
   // A user ends a path
   socket.on( 'endPath', function( data, sessionId ) {
     socket.broadcast.emit( 'endPath', data, sessionId );
   });  
+  
+  // A user write text
+  socket.on( 'writeTextNode', function( data, sessionId ) {
+    socket.broadcast.emit( 'writeTextNode', data, sessionId );
+  });
 
 });
